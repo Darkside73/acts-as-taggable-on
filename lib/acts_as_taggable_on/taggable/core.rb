@@ -26,14 +26,12 @@ module ActsAsTaggableOn::Taggable
             has_many_with_taggable_compatibility context_taggings, as: :taggable,
                                                  dependent: :destroy,
                                                  class_name: 'ActsAsTaggableOn::Tagging',
-                                                 order: taggings_order,
                                                  conditions: {context: tags_type},
                                                  include: :tag
 
             has_many_with_taggable_compatibility context_tags, through: context_taggings,
                                                  source: :tag,
-                                                 class_name: 'ActsAsTaggableOn::Tag',
-                                                 order: taggings_order
+                                                 class_name: 'ActsAsTaggableOn::Tag'
 
           end
 
